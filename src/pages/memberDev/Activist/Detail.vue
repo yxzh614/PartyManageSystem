@@ -1,8 +1,73 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="个人信息" name="first">
-      <person-info ID='21010619970322331X'/>
-
+      <el-form label-position="left" inline class="demo-table-expand">
+        <el-form-item label="姓名">
+          <span @click="setInfo">2</span>
+        </el-form-item>
+        <el-form-item label="性别">
+          <span>b</span>
+        </el-form-item>
+        <el-form-item label="生日">
+          <span>3</span>
+        </el-form-item>
+        <el-form-item label="民族">
+          <span>d</span>
+        </el-form-item>
+        <el-form-item label="籍贯">
+          <span>e</span>
+        </el-form-item>
+        <el-form-item label="户口所在派出所">
+          <span>f</span>
+        </el-form-item>
+        <el-form-item label="家庭住址">
+          <span>g</span>
+        </el-form-item>
+        <el-form-item label="身份证号">
+          <span>g</span>
+        </el-form-item>
+        <el-form-item label="联系电话">
+          <span>g</span>
+        </el-form-item>
+        <el-form-item label="备注">
+          <span>g</span>
+        </el-form-item>
+        <el-form-item label="学历">
+          <span>g</span>
+        </el-form-item>
+        <el-form-item label="邮编">
+          <span>g</span>
+        </el-form-item>
+        <el-form-item label="照片">
+          <el-upload
+            :visible="!dialogVisible2"
+            action=""
+            :limit="1"
+            :auto-upload="false"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove">
+            <i class="el-icon-plus"></i>
+          </el-upload>
+          <el-dialog :visible.sync="dialogVisible2" size="tiny">
+            <img width="100%" :src="dialogImageUrl" alt="">
+          </el-dialog>
+        </el-form-item>
+      </el-form>
+      <el-dialog
+        title="编辑信息"
+        :visible.sync="dialogVisible"
+        :before-close="handleClose">
+        <el-form :model="form">
+          <el-form-item label="姓名" :label-width="formLabelWidth">
+            <el-input v-model="form.name" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        </div>
+      </el-dialog>
     </el-tab-pane>
     <el-tab-pane label="组织信息" name="second">
       <el-form label-position="left" inline class="demo-table-expand">
@@ -84,13 +149,14 @@
         <el-form-item label="入党申请书">
           <span>未提交</span>
         </el-form-item>
+
       </el-form>
     </el-tab-pane>
   </el-tabs>
+
 </template>
 
 <script>
-import personInfo from '../../../components/personInfo.vue'
 export default {
   name: 'detail',
   data () {
@@ -111,6 +177,8 @@ export default {
       dialogImageUrl: '',
       dialogVisible2: false
     }
+  },
+  computed: {
   },
   methods: {
     onSubmit () {
@@ -136,12 +204,26 @@ export default {
       this.dialogImageUrl = file.url
       this.dialogVisible2 = true
     }
-  },
-  components: {
-    personInfo
   }
 }
 </script>
 <style scoped>
+.el-form {
+  width: 50%;
+  margin-top: 1%;
+  margin-left: 25%;
+}
+.demo-table-expand {
+  font-size: 0;
+}
+.demo-table-expand label {
+  width: 90px;
+  color: #99a9bf;
+}
+.demo-table-expand .el-form-item {
+  margin-right: 0;
+  margin-bottom: 0;
+  width: 50%;
+}
 </style>
 

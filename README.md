@@ -2,6 +2,8 @@
 
 > 党建管理系统
 
+## vue 重构版本
+
 ## Build Setup
 
 ``` bash

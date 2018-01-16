@@ -10,7 +10,7 @@
       </template>
       <el-menu-item-group>
         <el-menu-item index="/MemberDev/Applicant">申请入党</el-menu-item>
-        <el-menu-item index="1-2">确定入党积极分子</el-menu-item>
+        <el-menu-item index="/MemberDev/Activist">确定入党积极分子</el-menu-item>
         <el-menu-item index="1-2">接收预备党员</el-menu-item>
         <el-menu-item index="1-2">预备党员转正</el-menu-item>
       </el-menu-item-group>

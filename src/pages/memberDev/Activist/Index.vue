@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <p>申请入党人员信息</p>
+      <p>积极分子人员信息</p>
     </div>
     <div style="margin-top: 20px">
       <el-button type="primary" @click="cancelSelection()"><i class="el-icon-circle-plus"/> 新建</el-button>
@@ -53,19 +53,19 @@ export default {
     return {
       tableData: [{
         date: '1500000000',
-        name: '王小虎',
+        name: '王小虎2',
         memberType: '教师'
       }, {
         date: '1500000000',
-        name: '王小虎',
+        name: '王小虎2',
         memberType: '研究生'
       }, {
         date: '1500000000',
-        name: '王小虎',
+        name: '王小虎2',
         memberType: '教师'
       }, {
         date: '1500000000',
-        name: '王小虎',
+        name: '王小虎2',
         memberType: '本科生'
       }],
       show3: false
@@ -75,7 +75,7 @@ export default {
     handleDetail (index, row) {
       console.log(index)
       console.log(row)
-      this.$router.push({name: 'MemberDevApplicantDetail', params: {ID: 40}})
+      this.$router.push({name: 'MemberDevActivistDetail', params: {ID: 40}})
     },
     filterMemberType (value, row) {
       return row.memberType === value
