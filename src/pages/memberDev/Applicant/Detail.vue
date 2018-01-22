@@ -2,109 +2,33 @@
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="个人信息" name="first">
       <person-info ID='21010619970322331X'/>
-
     </el-tab-pane>
     <el-tab-pane label="组织信息" name="second">
-      <el-form label-position="left" inline class="demo-table-expand">
-        <el-form-item label="政治面貌">
-          <span>a</span>
-        </el-form-item>
-        <el-form-item label="申请入党时间">
-          <span>b</span>
-        </el-form-item>
-        <el-form-item label="列积极分子时间">
-          <span>c</span>
-        </el-form-item>
-        <el-form-item label="培养人">
-          <span>d</span>
-        </el-form-item>
-        <el-form-item label="所属组织">
-          <span>e</span>
-        </el-form-item>
-        <el-form-item label="行政职务">
-          <span>f</span>
-        </el-form-item>
-        <el-form-item label="状态">
-          <span>g</span>
-        </el-form-item>
-      </el-form>
+      <person-dep ID='21010619970322331X'/>
     </el-tab-pane>
     <el-tab-pane label="评价信息" name="third">
-      <el-form label-position="left" inline class="demo-table-expand">
-        <el-form-item label="个人特长">
-          <span>a</span>
-        </el-form-item>
-        <el-form-item label="获奖情况">
-          <span>b</span>
-        </el-form-item>
-        <el-form-item label="处分情况">
-          <span>c</span>
-        </el-form-item>
-        <el-form-item label="突出表现和存在不足">
-          <span>d</span>
-        </el-form-item>
-      </el-form>
-    </el-tab-pane>
-    <el-tab-pane label="在校信息" name="forth">
-      <el-form label-position="left" inline class="demo-table-expand">
-        <el-form-item label="专业">
-          <span>a</span>
-        </el-form-item>
-        <el-form-item label="辅导员">
-          <span>b555555555555555555555555555555555555555555555555555</span>
-        </el-form-item>
-        <el-form-item label="寝室楼号">
-          <span>c</span>
-        </el-form-item>
-        <el-form-item label="寝室号">
-          <span>d</span>
-        </el-form-item>
-        <el-form-item label="床号">
-          <span>d</span>
-        </el-form-item>
-        <el-form-item label="高中入学日期">
-          <span>d</span>
-        </el-form-item>
-        <el-form-item label="高中毕业日期">
-          <span>d</span>
-        </el-form-item>
-        <el-form-item label="排名">
-          <span>d</span>
-        </el-form-item>
-        <el-form-item label="挂科数">
-          <span>d</span>
-        </el-form-item>
-        <el-form-item label="入团时间">
-          <span>d</span>
-        </el-form-item>
-      </el-form>
+      <person-judge ID='21010619970322331X'/>
     </el-tab-pane>
     <el-tab-pane label="文档信息" name="fifth">
-      <el-form label-position="left" inline class="demo-table-expand">
-        <el-form-item label="入党申请书">
-          <span>未提交</span>
-        </el-form-item>
-      </el-form>
+      <person-doc />
+    </el-tab-pane>
+    <el-tab-pane v-if="$route.params.Type!=='教师'" label="在校信息" name="six">
+      <person-stu-info />
     </el-tab-pane>
   </el-tabs>
 </template>
 
 <script>
-import personInfo from '../../../components/personInfo.vue'
+import PersonInfo from '../../../components/form/PersonInfo.vue'
+import PersonDep from '../../../components/form/PersonDep.vue'
+import PersonJudge from '../../../components/form/PersonJudge.vue'
+import PersonDoc from '../../../components/form/PersonDoc.vue'
+import PersonStuInfo from '../../../components/form/PersonStuInfo.vue'
+
 export default {
   name: 'detail',
   data () {
     return {
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
       activeName: 'first',
       dialogVisible: false,
       formLabelWidth: '120px',
@@ -138,10 +62,12 @@ export default {
     }
   },
   components: {
-    personInfo
+    PersonInfo,
+    PersonDep,
+    PersonJudge,
+    PersonDoc,
+    PersonStuInfo
   }
 }
 </script>
-<style scoped>
-</style>
 

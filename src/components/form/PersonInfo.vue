@@ -15,6 +15,9 @@
         <img width="100%" :src="dialogImageUrl" alt="">
       </el-dialog>
     </div>
+    <div>
+      <el-button class="edit-btn" @click="dialogVisible = true">编辑</el-button>
+    </div>
     <el-form label-position="left" inline class="demo-table-expand">
       <el-form-item label="姓名">
         <span>{{personInfo.name}}</span>
@@ -113,7 +116,7 @@ export default {
   },
   computed: {
     birthday () {
-      let id = this.personInfo.ID
+      let id = this.personInfo.ID || ''
       return id.slice(6, 10) + '-' + id.slice(10, 12) + '-' + id.slice(12, 14)
     }
   },
@@ -122,9 +125,6 @@ export default {
   },
   beforeMount () {
     console.log('beforeMount')
-  },
-  mounted () {
-    console.log('mounted')
     this.personInfo = {
       ID: '21010619970322331X',
       name: '岳贤哲',
@@ -139,19 +139,25 @@ export default {
       remark: 'x'
     }
   },
+  mounted () {
+    console.log('mounted')
+  },
   beforeUpdate () {
     console.log('beforeUpdate')
   },
   updated () {
     console.log('updated')
   },
-  props: [
-    'ID'
-  ]
+  props: {
+    ID: String
+  }
 }
 </script>
 
 <style scoped>
+.edit-btn {
+  float: left;
+}
 .el-form {
   width: 50%;
   margin-top: 1%;

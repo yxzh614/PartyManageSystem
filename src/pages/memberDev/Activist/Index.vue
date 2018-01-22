@@ -75,7 +75,7 @@ export default {
     handleDetail (index, row) {
       console.log(index)
       console.log(row)
-      this.$router.push({name: 'MemberDevActivistDetail', params: {ID: 40}})
+      this.$router.push({name: 'MemberDevActivistDetail', params: {ID: 40, Type: row.memberType}})
     },
     filterMemberType (value, row) {
       return row.memberType === value
